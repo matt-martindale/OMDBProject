@@ -18,6 +18,13 @@ class MovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .white
+        
+        let glassIconView = textFieldInsideSearchBar?.leftView as? UIImageView
+
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = UIColor.white
     }
 
     // MARK: - Table view data source
@@ -46,5 +53,11 @@ extension MovieTableViewController: UISearchBarDelegate {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        movieController.movies = []
+        self.tableView.reloadData()
     }
 }
