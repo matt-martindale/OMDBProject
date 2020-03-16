@@ -13,6 +13,7 @@
 		C9BBC809241F26560042ED39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BBC807241F26560042ED39 /* Main.storyboard */; };
 		C9BBC80B241F26570042ED39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BBC80A241F26570042ED39 /* Assets.xcassets */; };
 		C9BBC80E241F26570042ED39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BBC80C241F26570042ED39 /* LaunchScreen.storyboard */; };
+		C9BBC81A241F27680042ED39 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC819241F27680042ED39 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C9BBC80A241F26570042ED39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BBC80D241F26570042ED39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9BBC80F241F26570042ED39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BBC819241F27680042ED39 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		C9BBC800241F26560042ED39 /* OMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				C9BBC80F241F26570042ED39 /* Info.plist */,
 				C9BBC801241F26560042ED39 /* AppDelegate.swift */,
 				C9BBC803241F26560042ED39 /* SceneDelegate.swift */,
 				C9BBC805241F26560042ED39 /* ViewController.swift */,
-				C9BBC807241F26560042ED39 /* Main.storyboard */,
 				C9BBC80A241F26570042ED39 /* Assets.xcassets */,
 				C9BBC80C241F26570042ED39 /* LaunchScreen.storyboard */,
-				C9BBC80F241F26570042ED39 /* Info.plist */,
+				C9BBC807241F26560042ED39 /* Main.storyboard */,
+				C9BBC815241F27310042ED39 /* Model */,
+				C9BBC818241F27490042ED39 /* Storyboard */,
+				C9BBC817241F27430042ED39 /* View */,
+				C9BBC816241F27360042ED39 /* View Controller */,
 			);
 			path = OMDBProject;
+			sourceTree = "<group>";
+		};
+		C9BBC815241F27310042ED39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9BBC819241F27680042ED39 /* APIKey.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C9BBC816241F27360042ED39 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		C9BBC817241F27430042ED39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C9BBC818241F27490042ED39 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +175,7 @@
 			files = (
 				C9BBC806241F26560042ED39 /* ViewController.swift in Sources */,
 				C9BBC802241F26560042ED39 /* AppDelegate.swift in Sources */,
+				C9BBC81A241F27680042ED39 /* APIKey.swift in Sources */,
 				C9BBC804241F26560042ED39 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
