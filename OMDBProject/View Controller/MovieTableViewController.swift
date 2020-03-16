@@ -40,8 +40,6 @@ class MovieTableViewController: UITableViewController {
         cell.movie = movie
         return cell
     }
-    
-    
 
 }
 
