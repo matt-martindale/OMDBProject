@@ -18,22 +18,46 @@ class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var runtimeLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var directorLabel: UILabel!
-    @IBOutlet weak var actorsLabel: UILabel!
-    @IBOutlet weak var plotTextView: UITextView!
+    @IBOutlet weak var posterImage: UIImageView!
     
     func updateViews() {
         titleLabel.text = movie?.title
         yearLabel.text = movie?.year
-        ratingLabel.text = movie?.rated
-        runtimeLabel.text = movie?.runTime
-        scoreLabel.text = movie?.score
-        directorLabel.text = movie?.director
-        actorsLabel.text = movie?.actors
-        plotTextView.text = movie?.plot
+        getPosterImage()
+    }
+    
+    func getPosterImage() {
+        guard let poster = movie?.poster else { return }
+        if let url = URL(string: poster) {
+            do {
+                let data = try Data(contentsOf: url)
+                self.posterImage.image = UIImage(data: data)
+            } catch let err {
+                print("Error loading poster image: \(err.localizedDescription)")
+            }
+        }
     }
     
 }
+
+//extension UIImageView {
+//    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+//        contentMode = mode
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            guard
+//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                let data = data, error == nil,
+//                let image = UIImage(data: data)
+//                else { return }
+//            DispatchQueue.main.async() {
+//                self.image = image
+//            }
+//        }.resume()
+//    }
+//
+//    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+//        guard let url = URL(string: link) else { return }
+//        downloaded(from: url, contentMode: mode)
+//    }
+//}
