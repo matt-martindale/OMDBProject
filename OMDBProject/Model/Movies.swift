@@ -8,28 +8,26 @@
 
 import Foundation
 
-struct Movies {
+struct Movies: Decodable {
     let movieResults: [Movie]
 }
 
-struct Movie {
+struct Movie: Decodable {
     let title: String
     let year: String
     let runTime: String
     let director: String
     let actors: String
     let plot: String
-    let poster: String
     let score: String
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
-        case runtime = "Runtime"
+        case runTime = "Runtime"
         case director = "Director"
         case actors = "Actors"
         case plot = "Plot"
-        case poster = "Poster"
         case score = "Metascore"
     }
 }
