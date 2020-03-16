@@ -15,6 +15,7 @@ struct Movies: Decodable {
 struct Movie: Decodable {
     let title: String
     let year: String
+    let rating: String
     let runTime: String
     let director: String
     let actors: String
@@ -24,6 +25,7 @@ struct Movie: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
+        case rating = "Rating"
         case runTime = "Runtime"
         case director = "Director"
         case actors = "Actors"

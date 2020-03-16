@@ -18,7 +18,7 @@ class MovieController {
         case delete = "DELETE"
     }
     
-    let baseURL = URL(string: "http://www.omdbapi.com/?apikey=[\(apiKey)]&")!
+    let baseURL = URL(string: "http://www.omdbapi.com/?apikey=\(apiKey)&")!
     
     var movies: [Movie] = []
     
