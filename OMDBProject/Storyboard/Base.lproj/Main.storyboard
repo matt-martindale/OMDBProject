@@ -9,7 +9,7 @@
         <!--Search Movies-->
         <scene sceneID="SiX-is-J6Q">
             <objects>
-                <tableViewController id="JZa-8f-OsG" sceneMemberID="viewController">
+                <tableViewController id="JZa-8f-OsG" customClass="MovieTableViewController" customModule="OMDBProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qex-4r-qza">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="235" id="Xtb-QU-g8Y">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="235" id="Xtb-QU-g8Y" customClass="MovieTableViewCell" customModule="OMDBProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="235"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xtb-QU-g8Y" id="yBk-QQ-QDI">
@@ -69,7 +69,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4ns-Fb-aA1" userLabel="Movie Info">
-                                            <rect key="frame" x="30" y="50" width="249" height="14.5"/>
+                                            <rect key="frame" x="30" y="50" width="254" height="14.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="(2000)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rML-lu-VAs">
                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="14.5"/>
@@ -81,16 +81,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwW-HW-j2n">
-                                                    <rect key="frame" x="55" y="0.0" width="30" height="14.5"/>
+                                                    <rect key="frame" x="55" y="0.0" width="35" height="14.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="6ea-VE-cbb"/>
+                                                        <constraint firstAttribute="width" constant="35" id="6ea-VE-cbb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="113 mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIE-hu-FTX">
-                                                    <rect key="frame" x="95" y="0.0" width="60" height="14.5"/>
+                                                    <rect key="frame" x="100" y="0.0" width="60" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="FHJ-7r-k2N"/>
                                                     </constraints>
@@ -99,7 +99,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-nC-a3t" userLabel="Metascore">
-                                                    <rect key="frame" x="165" y="0.0" width="84" height="14.5"/>
+                                                    <rect key="frame" x="170" y="0.0" width="84" height="14.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Metascore:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8w-2U-7c4">
                                                             <rect key="frame" x="0.0" y="0.0" width="63.5" height="14.5"/>
@@ -165,6 +165,16 @@
                                         <constraint firstAttribute="bottom" secondItem="UOy-gN-tkg" secondAttribute="bottom" constant="10" id="xZm-T3-S8M"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="actorsLabel" destination="8c7-iT-VWb" id="mEl-YB-mBc"/>
+                                    <outlet property="directorLabel" destination="tBA-bO-x51" id="FQI-Us-xrz"/>
+                                    <outlet property="plotTextView" destination="UOy-gN-tkg" id="vr9-qs-X0Q"/>
+                                    <outlet property="ratingLabel" destination="EwW-HW-j2n" id="2Ts-Fa-8m4"/>
+                                    <outlet property="runtimeLabel" destination="cIE-hu-FTX" id="Uxz-ns-4EH"/>
+                                    <outlet property="scoreLabel" destination="1ud-BV-lgR" id="EwV-vm-X7g"/>
+                                    <outlet property="titleLabel" destination="y8L-ij-nSZ" id="RYR-gp-vw5"/>
+                                    <outlet property="yearLabel" destination="rML-lu-VAs" id="wpH-gd-H36"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -173,6 +183,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search Movies" id="Ofb-ny-GRY"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Eql-ls-n72" id="ogg-zS-gyU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLd-Q7-D3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

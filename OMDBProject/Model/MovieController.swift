@@ -18,14 +18,15 @@ class MovieController {
         case delete = "DELETE"
     }
     
-    let baseURL = URL(string: "http://www.omdbapi.com/?apikey=\(apiKey)&")!
+    let baseURL = URL(string: "http://www.omdbapi.com/?")!
     
     var movies: [Movie] = []
     
     func performSearch(searchTerm: String, completion: @escaping () -> Void) {
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        let queryItem = URLQueryItem(name: "s", value: searchTerm)
-        urlComponents?.queryItems = [queryItem]
+        let searchQueryItem = URLQueryItem(name: "s", value: searchTerm)
+        let apiQueryItem = URLQueryItem(name: "apikey", value: apiKey.apiKey)
+        urlComponents?.queryItems = [searchQueryItem, apiQueryItem]
         
         guard let requestURL = urlComponents?.url else { return }
         var request = URLRequest(url: requestURL)
@@ -46,8 +47,9 @@ class MovieController {
             let jsonDecoder = JSONDecoder()
             
             do {
+                self.movies = []
                 let movieResults = try jsonDecoder.decode(Movies.self, from: data)
-                self.movies = movieResults.movieResults
+                self.movies = movieResults.search
             } catch {
                 print("Error: unable to decode data: \(error)")
             }
