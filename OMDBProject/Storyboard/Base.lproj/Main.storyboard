@@ -55,7 +55,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEB-V9-Nds">
                                             <rect key="frame" x="20" y="20" width="80" height="114"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="NMF-bK-WJK"/>
+                                                <constraint firstAttribute="height" constant="120" id="NMF-bK-WJK"/>
                                                 <constraint firstAttribute="width" constant="80" id="dIL-w7-oU3"/>
                                             </constraints>
                                         </imageView>

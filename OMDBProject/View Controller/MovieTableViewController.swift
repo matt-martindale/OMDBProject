@@ -46,9 +46,11 @@ class MovieTableViewController: UITableViewController {
 extension MovieTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
-        movieController.performSearch(searchTerm: searchTerm) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.movieController.performSearch(searchTerm: searchTerm) {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
