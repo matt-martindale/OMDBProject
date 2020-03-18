@@ -25,8 +25,9 @@ class MovieDetail {
     func fetchMovieInfo(imdbID: String, completion: @escaping () -> Void) {
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let movieQueryItem = URLQueryItem(name: "i", value: imdbID)
+        let plotQuertyItem = URLQueryItem(name: "plot", value: "full")
         let apiQueryItem = URLQueryItem(name: "apikey", value: apiKey.apiKey)
-        urlComponents?.queryItems = [movieQueryItem, apiQueryItem]
+        urlComponents?.queryItems = [movieQueryItem, plotQuertyItem, apiQueryItem]
         
         guard let requestURL = urlComponents?.url else { return }
         var request = URLRequest(url: requestURL)
