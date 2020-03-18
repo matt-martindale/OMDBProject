@@ -14,7 +14,6 @@ class MovieTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -37,8 +36,16 @@ class MovieTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
         let movie = movieController.movies[indexPath.row]
-        cell.movie = movie
+        cell.movieSearch = movie
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailMovieSegue" {
+            let detailVC = segue.destination as? MovieDetailViewController
+            guard let movieIndex = tableView.indexPathForSelectedRow else { return }
+            detailVC?.imdbID = movieController.movies[movieIndex.row].imdbID
+        }
     }
 
 }

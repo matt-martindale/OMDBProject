@@ -1,16 +1,16 @@
 //
-//  Network.swift
+//  MovieDetailAPI.swift
 //  OMDBProject
 //
-//  Created by Matthew Martindale on 3/15/20.
+//  Created by Matthew Martindale on 3/17/20.
 //  Copyright © 2020 Matthew Martindale. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
-let apiKey = APIKey()
-
-class MovieController {
+class MovieDetail {
+    
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
@@ -20,44 +20,41 @@ class MovieController {
     
     let baseURL = URL(string: "http://www.omdbapi.com/?")!
     
-    var movies: [MovieSearch] = []
+    var movie: Movie?
     
-    func performSearch(searchTerm: String, completion: @escaping () -> Void) {
+    func fetchMovieInfo(imdbID: String, completion: @escaping () -> Void) {
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        let searchQueryItem = URLQueryItem(name: "s", value: searchTerm)
+        let movieQueryItem = URLQueryItem(name: "i", value: imdbID)
         let apiQueryItem = URLQueryItem(name: "apikey", value: apiKey.apiKey)
-        urlComponents?.queryItems = [searchQueryItem, apiQueryItem]
+        urlComponents?.queryItems = [movieQueryItem, apiQueryItem]
         
         guard let requestURL = urlComponents?.url else { return }
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
-            print(request)
-            if let error = error {
-                print("There was an error fetching data: \(error)")
+            guard error == nil else {
+                print("Error fetching data: \(error!)")
                 completion()
                 return
             }
             
             guard let data = data else {
-                print("Error: no data returned from data task")
+                print("Error: no data returned from task")
                 completion()
                 return
             }
             
             let jsonDecoder = JSONDecoder()
-            
             do {
-                self.movies = []
-                let movieResults = try jsonDecoder.decode(Movies.self, from: data)
-                self.movies = movieResults.search
+                let movieData = try jsonDecoder.decode(Movie.self, from: data)
+                self.movie = movieData
             } catch {
                 print("Error: unable to decode data: \(error)")
             }
             
             completion()
-            
         }.resume()
     }
+    
 }

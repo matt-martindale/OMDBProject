@@ -10,7 +10,7 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
     
-    var movie: Movie? {
+    var movieSearch: MovieSearch? {
         didSet {
             updateViews()
         }
@@ -21,13 +21,13 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var posterImage: UIImageView!
     
     func updateViews() {
-        titleLabel.text = movie?.title
-        yearLabel.text = movie?.year
+        titleLabel.text = movieSearch?.title
+        yearLabel.text = movieSearch?.year
         getPosterImage()
     }
     
     func getPosterImage() {
-        guard let poster = movie?.poster else { return }
+        guard let poster = movieSearch?.poster else { return }
         if let url = URL(string: poster) {
             do {
                 let data = try Data(contentsOf: url)
